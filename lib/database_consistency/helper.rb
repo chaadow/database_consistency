@@ -89,7 +89,7 @@ module DatabaseConsistency
 
     # @return [Array<String>]
     def extract_index_columns(index_columns)
-      return index_columns unless index_columns.is_a?(String)
+      return index_columns.map { _1.gsub("\"", '') } unless index_columns.is_a?(String)
 
       index_columns.split(',')
                    .map(&:strip)
